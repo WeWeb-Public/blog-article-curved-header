@@ -1,10 +1,10 @@
 {
-    "name": "hello-world",
+    "name": "ouispoon-usecase-header",
     "type": "section",
     "wewebPublic": "true",
     "repository": {
         "type": "git",
-        "url": "https://github.com/WeWeb-Public/wwSection"
+        "url": "https://github.com/getweweb/ouispoon-usecase-header"
     },
     "version": "0.0.1",
     "private": true,
