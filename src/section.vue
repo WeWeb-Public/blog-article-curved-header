@@ -363,11 +363,16 @@ $margin: 100px;
     }
     .contents {
         position: relative;
-        width: 740px;
-        margin-left: 50%;
-        transform: translateX(-50%);
+        width: 90%;
+        margin-left: 5%;
+        transform: translateX(0);
         .content {
             position: relative;
+        }
+        @media (min-width: 768px) {
+            width: 740px;
+            margin-left: 50%;
+            transform: translateX(-50%);
         }
     }
 }
