@@ -1,11 +1,12 @@
 module.exports = [
     {
-        name: 'my_section',
+        name: 'article',
+        category: 'blog',
         storeName: {
-            en_GB: "My first section"
+            en_GB: "article with curved header image"
         },
         storeDesc: {
-            en_GB: "Template for my first section"
+            en_GB: "article with curved header image"
         }
     }
 ]

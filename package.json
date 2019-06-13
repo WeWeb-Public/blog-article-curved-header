@@ -1,10 +1,10 @@
 {
-    "name": "ouispoon-usecase-header",
+    "name": "blog-article-curved-header",
     "type": "section",
     "wewebPublic": "true",
     "repository": {
         "type": "git",
-        "url": "https://github.com/getweweb/ouispoon-usecase-header"
+        "url": "https://github.com/weweb-public/blog-article-curved-header"
     },
     "version": "0.0.1",
     "private": true,

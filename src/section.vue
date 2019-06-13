@@ -4,20 +4,16 @@
 
 <!-- This is your HTML -->
 <template>
-    <div class="ouispoon-usecase-header">
+    <div class="blog-article-curved-header">
         <!-- wwManager:start -->
         <wwSectionEditMenu v-bind:sectionCtrl="sectionCtrl"></wwSectionEditMenu>
         <!-- wwManager:end -->
-        <!-- Weweb Wallpaper -->
         <wwObject class="background" v-bind:ww-object="section.data.color" ww-category="background"></wwObject>
 
         <div class="header">
             <wwObject class="image" ww-category="background" v-bind:ww-object="section.data.header"></wwObject>
         </div>
         <div class="row-container">
-            <div class="round">
-                <wwObject v-bind:ww-object="section.data.roundImage"></wwObject>
-            </div>
             <div class="left">
                 <wwObject class="show-mobile" v-bind:ww-object="section.data.btnLeftMobile"></wwObject>
                 <wwObject class="show-desktop" v-if="!isMobile" v-bind:ww-object="section.data.btnLeft"></wwObject>
@@ -52,6 +48,11 @@
                     </div>
                 </span>
             </div>
+        </div>
+        <div class="contents">
+            <wwLayoutColumn tag="div" ww-default="ww-text" :ww-list="section.data.contents" class="content" @ww-add="add(section.data.contents, $event)" @ww-remove="remove(section.data.contents, $event)">
+                <wwObject v-for="content in section.data.contents" :key="content.uniqueId" :ww-object="content"></wwObject>
+            </wwLayoutColumn>
         </div>
     </div>
 </template>
@@ -107,13 +108,6 @@ export default {
                 type: 'ww-image'
             });
         }
-
-        if (!this.section.data.roundImage) {
-            this.section.data.roundImage = wwLib.wwObject.getDefault({
-                type: 'ww-image'
-            });
-        }
-
 
         if (!this.section.data.btnLeft) {
             this.section.data.btnLeft = wwLib.wwObject.getDefault({
@@ -178,6 +172,11 @@ export default {
             needUpdate = true
         }
 
+        if (_.isEmpty(this.section.data.contents)) {
+            this.section.data.contents = [];
+            needUpdate = true;
+        }
+
         if (needUpdate) {
             this.sectionCtrl.update(this.section);
         }
@@ -186,24 +185,24 @@ export default {
     methods: {
         toggleDisplaySn() {
             this.showSn = !this.showSn;
-        }
+        },
         /* wwManager:start */
-        // add(list, options) {
-        //     try {
-        //         list.splice(options.index, 0, options.wwObject);
-        //         this.sectionCtrl.update(this.section);
-        //     } catch (error) {
-        //         wwLib.wwLog.error('ERROR : ', error);
-        //     }
-        // },
-        // remove(list, options) {
-        //     try {
-        //         list.splice(options.index, 1);
-        //         this.sectionCtrl.update(this.section);
-        //     } catch (error) {
-        //         wwLib.wwLog.error('ERROR : ', error);
-        //     }
-        // },
+        add(list, options) {
+            try {
+                list.splice(options.index, 0, options.wwObject);
+                this.sectionCtrl.update(this.section);
+            } catch (error) {
+                wwLib.wwLog.error('ERROR : ', error);
+            }
+        },
+        remove(list, options) {
+            try {
+                list.splice(options.index, 1);
+                this.sectionCtrl.update(this.section);
+            } catch (error) {
+                wwLib.wwLog.error('ERROR : ', error);
+            }
+        }
         /* wwManager:end */
 
     }
@@ -216,7 +215,7 @@ export default {
 <style lang="scss" scoped>
 $roundWidth: 200px;
 $margin: 100px;
-.ouispoon-usecase-header {
+.blog-article-curved-header {
     .svg {
         width: 100%;
         position: relative;
@@ -259,7 +258,7 @@ $margin: 100px;
         justify-content: space-between;
         width: 100%;
         padding-top: 20px;
-        margin-bottom: 100px;
+        margin-bottom: 20px;
         // overflow: initial;
         .round {
             position: absolute;
@@ -360,6 +359,15 @@ $margin: 100px;
                     margin-bottom: 10px;
                 }
             }
+        }
+    }
+    .contents {
+        position: relative;
+        width: 740px;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        .content {
+            position: relative;
         }
     }
 }
