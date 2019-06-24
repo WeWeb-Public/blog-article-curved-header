@@ -6,7 +6,7 @@
 <template>
     <div class="blog-article-curved-header">
         <!-- wwManager:start -->
-        <wwSectionEditMenu v-bind:sectionCtrl="sectionCtrl"></wwSectionEditMenu>
+        <wwSectionEditMenu v-bind:sectionCtrl="sectionCtrl" :options="openOptions"></wwSectionEditMenu>
         <!-- wwManager:end -->
         <wwObject class="background" v-bind:ww-object="section.data.color" ww-category="background"></wwObject>
 
@@ -18,29 +18,35 @@
                 <wwObject class="show-mobile" v-bind:ww-object="section.data.btnLeftMobile"></wwObject>
                 <wwObject class="show-desktop" v-if="!isMobile" v-bind:ww-object="section.data.btnLeft"></wwObject>
             </div>
-            <div class="right">
+            <div v-if="displayShareLinks" class="right">
                 <span class="show-mobile">
                     <wwObject v-bind:ww-object="section.data.share" @click="toggleDisplaySn()"></wwObject>
                     <div class="icon-container" :style="{'display': displaySn}">
-                        <wwObject class="icon" v-bind:ww-object="section.data.icon1"></wwObject>
-                        <wwObject class="icon" v-bind:ww-object="section.data.icon2"></wwObject>
-                        <wwObject class="icon" v-bind:ww-object="section.data.icon3"></wwObject>
+                        <!-- LinkedIn -->
+                        <wwObject v-if="section.data.linkedin" class="icon" v-bind:ww-object="section.data.icon1"></wwObject>
+                        <!-- Twitter -->
+                        <wwObject v-if="section.data.twitter" class="icon" v-bind:ww-object="section.data.icon2"></wwObject>
+                        <!-- Facebook -->
+                        <wwObject v-if="section.data.facebook" class="icon" v-bind:ww-object="section.data.icon3"></wwObject>
                     </div>
                 </span>
                 <span class="show-desktop">
-                    <div class="icon">
+                    <!-- LinkedIn -->
+                    <div v-if="section.data.linkedin" class="icon">
                         <wwObject v-bind:ww-object="section.data.icon1"></wwObject>
                         <div class="tooltip" :class="{'force-display': editMode}">
                             <wwObject v-bind:ww-object="section.data.icon1Tip"></wwObject>
                         </div>
                     </div>
-                    <div class="icon">
+                    <!-- Twitter -->
+                    <div v-if="section.data.twitter" class="icon">
                         <wwObject v-bind:ww-object="section.data.icon2"></wwObject>
                         <div class="tooltip" :class="{'force-display': editMode}">
                             <wwObject v-bind:ww-object="section.data.icon2Tip"></wwObject>
                         </div>
                     </div>
-                    <div class="icon">
+                    <!-- Facebook -->
+                    <div v-if="section.data.facebook" class="icon">
                         <wwObject v-bind:ww-object="section.data.icon3"></wwObject>
                         <div class="tooltip" :class="{'force-display': editMode}">
                             <wwObject v-bind:ww-object="section.data.icon3Tip"></wwObject>
@@ -87,6 +93,9 @@ export default {
             } else {
                 return 'none'
             }
+        },
+        displayShareLinks() {
+            return (this.section.data.linkedin || this.section.data.twitter || this.section.data.facebook) ? true : false
         }
     },
     created() {
@@ -202,7 +211,86 @@ export default {
             } catch (error) {
                 wwLib.wwLog.error('ERROR : ', error);
             }
-        }
+        },
+        async openOptions() {
+            try {
+                wwLib.wwPopups.addStory('BLOG_ARTICLE_CONFIG', {
+                    title: {
+                        en: 'Article configuration',
+                        fr: 'Configuration de l\'article'
+                    },
+                    type: 'wwPopupForm',
+                    storyData: {
+                        fields: [
+                            {
+                                label: {
+                                    en: 'Share on LinkedIn button:',
+                                    fr: 'Bouton partager sur LinkedIn :'
+                                },
+                                type: 'radio',
+                                key: 'linkedin',
+                                valueData: 'section.data.linkedin'
+                            },
+                            {
+                                label: {
+                                    en: 'Share on Facebook button:',
+                                    fr: 'Bouton partager sur Facebook :'
+                                },
+                                type: 'radio',
+                                key: 'facebook',
+                                valueData: 'section.data.facebook'
+                            },
+                            {
+                                label: {
+                                    en: 'Share on Twitter button:',
+                                    fr: 'Bouton partager sur Twitter :'
+                                },
+                                type: 'radio',
+                                key: 'twitter',
+                                valueData: 'section.data.twitter'
+                            },
+                        ]
+                    },
+                    buttons: {
+                        NEXT: {
+                            text: {
+                                en: 'Finish',
+                                fr: 'Terminer'
+                            },
+                            next: null
+                        }
+                    }
+                })
+                let options = {
+                    firstPage: 'BLOG_ARTICLE_CONFIG',
+                    data: {
+                        section: this.section,
+                    },
+                }
+                const result = await wwLib.wwPopups.open(options)
+                let needUpdate = false
+                if (typeof (result) != 'undefined') {
+                    if (typeof (result.linkedin) != 'undefined') {
+                        this.section.data.linkedin = result.linkedin
+                        needUpdate = true
+                    }
+                    if (typeof (result.twitter) != 'undefined') {
+                        this.section.data.twitter = result.twitter
+                        needUpdate = true
+                    }
+                    if (typeof (result.facebook) != 'undefined') {
+                        this.section.data.facebook = result.facebook
+                        needUpdate = true
+                    }
+                    if (needUpdate) {
+                        this.sectionCtrl.update(this.section);
+                        this.$forceUpdate();
+                    }
+                }
+            } catch (error) {
+                wwLib.wwLog.error('ERROR : ', error);
+            }
+        },
         /* wwManager:end */
 
     }
@@ -363,16 +451,14 @@ $margin: 100px;
     }
     .contents {
         position: relative;
-        width: 90%;
-        margin-left: 5%;
-        transform: translateX(0);
+        display: flex;
+        justify-content: center;
         .content {
             position: relative;
-        }
-        @media (min-width: 768px) {
-            width: 740px;
-            margin-left: 50%;
-            transform: translateX(-50%);
+            width: 90%;
+            @media (min-width: 768px) {
+                width: 740px;
+            }
         }
     }
 }
