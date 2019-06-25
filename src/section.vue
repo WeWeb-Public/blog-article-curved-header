@@ -23,31 +23,31 @@
                     <wwObject v-bind:ww-object="section.data.share" @click="toggleDisplaySn()"></wwObject>
                     <div class="icon-container" :style="{'display': displaySn}">
                         <!-- LinkedIn -->
-                        <wwObject v-if="section.data.linkedin" class="icon" v-bind:ww-object="section.data.icon1"></wwObject>
+                        <wwObject v-if="section.data.linkedin" class="icon" v-bind:ww-object="section.data.icon1" @click="shareOn('linkedin')"></wwObject>
                         <!-- Twitter -->
-                        <wwObject v-if="section.data.twitter" class="icon" v-bind:ww-object="section.data.icon2"></wwObject>
+                        <wwObject v-if="section.data.twitter" class="icon" v-bind:ww-object="section.data.icon2" @click="shareOn('twitter')"></wwObject>
                         <!-- Facebook -->
-                        <wwObject v-if="section.data.facebook" class="icon" v-bind:ww-object="section.data.icon3"></wwObject>
+                        <wwObject v-if="section.data.facebook" class="icon" v-bind:ww-object="section.data.icon3" @click="shareOn('facebook')"></wwObject>
                     </div>
                 </span>
                 <span class="show-desktop">
                     <!-- LinkedIn -->
                     <div v-if="section.data.linkedin" class="icon">
-                        <wwObject v-bind:ww-object="section.data.icon1"></wwObject>
+                        <wwObject v-bind:ww-object="section.data.icon1" @click="shareOn('linkedin')"></wwObject>
                         <div class="tooltip" :class="{'force-display': editMode}">
                             <wwObject v-bind:ww-object="section.data.icon1Tip"></wwObject>
                         </div>
                     </div>
                     <!-- Twitter -->
                     <div v-if="section.data.twitter" class="icon">
-                        <wwObject v-bind:ww-object="section.data.icon2"></wwObject>
+                        <wwObject v-bind:ww-object="section.data.icon2" @click="shareOn('twitter')"></wwObject>
                         <div class="tooltip" :class="{'force-display': editMode}">
                             <wwObject v-bind:ww-object="section.data.icon2Tip"></wwObject>
                         </div>
                     </div>
                     <!-- Facebook -->
                     <div v-if="section.data.facebook" class="icon">
-                        <wwObject v-bind:ww-object="section.data.icon3"></wwObject>
+                        <wwObject v-bind:ww-object="section.data.icon3" @click="shareOn('facebook')"></wwObject>
                         <div class="tooltip" :class="{'force-display': editMode}">
                             <wwObject v-bind:ww-object="section.data.icon3Tip"></wwObject>
                         </div>
@@ -194,6 +194,27 @@ export default {
     methods: {
         toggleDisplaySn() {
             this.showSn = !this.showSn;
+        },
+        shareOn(socialMedia) {
+            const url = window.location.href;
+            const page = wwLib.wwWebsiteData.getCurrentPage()
+            const title = wwLib.wwLang.getText(page.title)
+            switch (socialMedia) {
+                case 'linkedin':
+                    window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}', '_blank'`);
+                    break;
+                case 'twitter':
+                    window.open(`https://twitter.com/share?url=${url}&amp;text=${title} &amp;', '_blank'`);
+                    break;
+                case 'facebook':
+                    window.open(`https://www.facebook.com/sharer.php?u=${url} title=${title}, '_blank'`);
+                    break;
+
+                default:
+                    break;
+            }
+
+
         },
         /* wwManager:start */
         add(list, options) {
