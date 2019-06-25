@@ -1,7 +1,7 @@
 {
     "name": "template",
     "color": {
-        "uniqueId": 5496640101,
+        "uniqueId": 9386818720,
         "wwVersion": 3,
         "content": {
             "type": "ww-color",
@@ -48,7 +48,7 @@
         "anim": {}
     },
     "header": {
-        "uniqueId": 11192018390,
+        "uniqueId": 4263460817,
         "wwVersion": 3,
         "content": {
             "type": "ww-image",
@@ -132,7 +132,7 @@
         "anim": {}
     },
     "roundImage": {
-        "uniqueId": 14869765507,
+        "uniqueId": 13085959105,
         "wwVersion": 3,
         "content": {
             "type": "ww-image",
@@ -217,13 +217,13 @@
         "anim": {}
     },
     "btnLeft": {
-        "uniqueId": 2164125148,
+        "uniqueId": 8157886839,
         "wwVersion": 3,
         "content": {
             "type": "ww-button",
             "data": {
                 "text": {
-                    "uniqueId": 12558788963,
+                    "uniqueId": 2099757548,
                     "wwVersion": 3,
                     "content": {
                         "type": "ww-text",
@@ -266,7 +266,7 @@
                     "data": {
                         "children": [
                             {
-                                "uniqueId": 802913329,
+                                "uniqueId": 5637931512,
                                 "wwVersion": 3,
                                 "content": {
                                     "type": "ww-icon",
@@ -367,7 +367,7 @@
         "anim": {}
     },
     "btnLeftMobile": {
-        "uniqueId": 7922127389,
+        "uniqueId": 2177181739,
         "wwVersion": 3,
         "content": {
             "type": "ww-icon",
@@ -419,7 +419,7 @@
         "anim": {}
     },
     "icon1": {
-        "uniqueId": 10908201514,
+        "uniqueId": 6794982601,
         "wwVersion": 3,
         "content": {
             "type": "ww-icon",
@@ -471,7 +471,7 @@
         "anim": {}
     },
     "icon1Tip": {
-        "uniqueId": 5162825144,
+        "uniqueId": 12133448100,
         "wwVersion": 3,
         "content": {
             "type": "ww-text",
@@ -515,7 +515,7 @@
         "anim": {}
     },
     "icon2": {
-        "uniqueId": 11231888238,
+        "uniqueId": 11044671034,
         "wwVersion": 3,
         "content": {
             "type": "ww-icon",
@@ -567,7 +567,7 @@
         "anim": {}
     },
     "icon2Tip": {
-        "uniqueId": 12287655214,
+        "uniqueId": 4460851430,
         "wwVersion": 3,
         "content": {
             "type": "ww-text",
@@ -611,7 +611,7 @@
         "anim": {}
     },
     "icon3": {
-        "uniqueId": 318905727,
+        "uniqueId": 12162693303,
         "wwVersion": 3,
         "content": {
             "type": "ww-icon",
@@ -663,7 +663,7 @@
         "anim": {}
     },
     "icon3Tip": {
-        "uniqueId": 3975535853,
+        "uniqueId": 338624153,
         "wwVersion": 3,
         "content": {
             "type": "ww-text",
@@ -707,7 +707,7 @@
         "anim": {}
     },
     "share": {
-        "uniqueId": 5204751564,
+        "uniqueId": 13912173438,
         "wwVersion": 3,
         "content": {
             "type": "ww-icon",
@@ -800,7 +800,7 @@
                     "bottom": 0
                 }
             },
-            "uniqueId": 8626881881,
+            "uniqueId": 11663456257,
             "wwVersion": 3
         },
         {
@@ -844,7 +844,7 @@
                     "bottom": 25
                 }
             },
-            "uniqueId": 4635346186,
+            "uniqueId": 14029017410,
             "wwVersion": 3
         },
         {
@@ -863,7 +863,7 @@
                     "justify": "flex-start",
                     "wwObjects": [
                         {
-                            "uniqueId": 4817683771,
+                            "uniqueId": 15084167235,
                             "anim": {},
                             "data": {},
                             "link": {
@@ -950,7 +950,7 @@
                             "wwVersion": 3
                         },
                         {
-                            "uniqueId": 11386914539,
+                            "uniqueId": 11661025156,
                             "anim": {},
                             "data": {},
                             "link": {
@@ -1012,7 +1012,7 @@
                     "bottom": 30
                 }
             },
-            "uniqueId": 8956054358,
+            "uniqueId": 2745308630,
             "wwVersion": 3
         },
         {
@@ -1096,11 +1096,11 @@
                     "bottom": 0
                 }
             },
-            "uniqueId": 2339059837,
+            "uniqueId": 1468542803,
             "wwVersion": 3
         },
         {
-            "uniqueId": 2344811847,
+            "uniqueId": 2225846809,
             "wwVersion": 3,
             "content": {
                 "type": "ww-text",
@@ -1144,7 +1144,7 @@
             "anim": {}
         },
         {
-            "uniqueId": 5590497954,
+            "uniqueId": 6066892714,
             "wwVersion": 3,
             "content": {
                 "type": "ww-text",
@@ -1187,5 +1187,8 @@
             "data": {},
             "anim": {}
         }
-    ]
+    ],
+    "linkedin": true,
+    "twitter": true,
+    "facebook": true
 }
