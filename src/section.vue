@@ -181,17 +181,17 @@ export default {
             needUpdate = true
         }
 
-        if (this.section.data.linkedin == 'undefined') {
+        if (typeof this.section.data.linkedin == 'undefined') {
             this.section.data.linkedin = true
             needUpdate = true
         }
 
-        if (this.section.data.facebook == 'undefined') {
+        if (typeof this.section.data.facebook == 'undefined') {
             this.section.data.facebook = true
             needUpdate = true
         }
 
-        if (this.section.data.twitter == 'undefined') {
+        if (typeof this.section.data.twitter == 'undefined') {
             this.section.data.twitter = true
             needUpdate = true
         }
