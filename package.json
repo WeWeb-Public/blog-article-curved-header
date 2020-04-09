@@ -1,27 +1,27 @@
 {
-  "name": "blog-article-curved-header",
-  "type": "section",
-  "wewebPublic": "true",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/weweb-public/blog-article-curved-header"
-  },
-  "version": "0.0.9",
-  "private": true,
-  "scripts": {
-    "build": "weweb-build",
-    "serve": "weweb-serve",
-    "upload": "weweb-upload"
-  },
-  "dependencies": {
-    "vue": "^2.5.16"
-  },
-  "devDependencies": {
-    "weweb-client": "^1.0.37"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+	"name": "blog-article-curved-header",
+	"type": "section",
+	"wewebPublic": "true",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/weweb-public/blog-article-curved-header"
+	},
+	"version": "0.0.10",
+	"private": true,
+	"scripts": {
+		"build": "weweb-build",
+		"serve": "weweb-serve",
+		"create-config": "weweb-config"
+	},
+	"dependencies": {
+		"vue": "^2.6.11"
+	},
+	"devDependencies": {
+		"weweb-client": "^1.1.3"
+	},
+	"browserslist": [
+		"> 1%",
+		"last 2 versions",
+		"not ie <= 8"
+	]
 }
